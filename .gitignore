@@ -240,5 +240,8 @@ Thumbs.db
 .prof
 
 .env
+**/migrations/**
+**/migrations
+**/migrations/__init__.py
 
 # End of https://www.toptal.com/developers/gitignore/api/pycharm+all,python
