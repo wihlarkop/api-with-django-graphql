@@ -85,7 +85,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 GRAPHENE = {
-    'SCHEMA': 'core.schema.schema'
+    "SCHEMA": 'core.schema.schema'
 }
 
 LANGUAGE_CODE = 'en-us'

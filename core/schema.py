@@ -1,4 +1,5 @@
 import graphene
+
 from todoapi.schema import TodoQuery
 
 
