@@ -24,6 +24,7 @@ DEFAULT_APPS = [
 
 LOCAL_APPS = [
     'todoapi.apps.TodoapiConfig',
+    'diaryapi.apps.DiaryapiConfig'
 ]
 
 THIRD_PARTY_APPS = [
