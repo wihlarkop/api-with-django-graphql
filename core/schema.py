@@ -1,9 +1,10 @@
 import graphene
 
+from diaryapi.schema import DiaryQuery
 from todoapi.schema import TodoQuery, TodoMutation
 
 
-class Query(TodoQuery, graphene.ObjectType):
+class Query(DiaryQuery, TodoQuery, graphene.ObjectType):
     pass
 
 
