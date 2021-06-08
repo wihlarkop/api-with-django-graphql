@@ -8,4 +8,4 @@ class DiaryPost(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return None
+        return str(self.timestamp)

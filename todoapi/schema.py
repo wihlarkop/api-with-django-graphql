@@ -59,7 +59,7 @@ class DeleteTodo(graphene.Mutation):
 
     @staticmethod
     def mutate(root, info, id):
-        todo = Todo.objects.get(pk=id)
+        todo = Todo.objects.get(id=id)
         todo.delete()
 
         return None

@@ -1,6 +1,6 @@
 import graphene
 
-from diaryapi.schema import DiaryQuery
+from diaryapi.schema import DiaryQuery, DiaryMutation
 from todoapi.schema import TodoQuery, TodoMutation
 
 
@@ -8,7 +8,7 @@ class Query(DiaryQuery, TodoQuery, graphene.ObjectType):
     pass
 
 
-class Mutation(TodoMutation, graphene.ObjectType):
+class Mutation(DiaryMutation, TodoMutation, graphene.ObjectType):
     pass
 
 
