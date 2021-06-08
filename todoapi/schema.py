@@ -48,6 +48,8 @@ class UpdateStatusTodo(graphene.Mutation):
         todo.status = status
         todo.save()
 
+        return UpdateStatusTodo(id=todo.id, title=todo.title, status=todo.status)
+
 
 class DeleteTodo(graphene.Mutation):
     id = graphene.Int()
