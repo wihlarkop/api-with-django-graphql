@@ -21,13 +21,33 @@ class AddDiary(graphene.Mutation):
 
     @staticmethod
     def mutate(root, info, timestamp, post):
-        post = DiaryPost(
+        diariespost = DiaryPost(
             timestamp=timestamp,
             post=post
         )
-        post.save()
+        diariespost.save()
 
-        return AddDiary(id=post.id, timestamp=post.timestamp, post=post.post)
+        return AddDiary(id=diariespost.id, timestamp=diariespost.timestamp, post=diariespost.post)
+
+
+class UpdateDiary(graphene.Mutation):
+    id = graphene.Int()
+    timestamp = graphene.Date()
+    post = graphene.String()
+
+    class Arguments:
+        id = graphene.Int()
+        timestamp = graphene.Date()
+        post = graphene.String()
+
+    @staticmethod
+    def mutate(root, info, id, timestamp, post):
+        diariespost = DiaryPost.objects.get(pk=id)
+        diariespost.timestamp = timestamp
+        diariespost.post = post
+        diariespost.save()
+
+        return UpdateDiary(id=diariespost.id, title=diariespost.timestamp, status=diariespost.post)
 
 
 class DeleteDiary(graphene.Mutation):
@@ -38,8 +58,8 @@ class DeleteDiary(graphene.Mutation):
 
     @staticmethod
     def mutate(root, info, id):
-        post = DiaryPost.objects.get(id=id)
-        post.delete()
+        diariespost = DiaryPost.objects.get(id=id)
+        diariespost.delete()
 
         return None
 
