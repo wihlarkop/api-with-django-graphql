@@ -23,8 +23,10 @@ DEFAULT_APPS = [
 ]
 
 LOCAL_APPS = [
+    'blogapi.apps.BlogapiConfig',
+    'diaryapi.apps.DiaryapiConfig',
     'todoapi.apps.TodoapiConfig',
-    'diaryapi.apps.DiaryapiConfig'
+    'yellowpagesapi.apps.YellowpagesapiConfig'
 ]
 
 THIRD_PARTY_APPS = [
@@ -69,6 +71,17 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'postgres',
+#         'PASSWORD': 'postgres',
+#         'HOST': 'db',
+#         'PORT': 5432,
+#     }
+# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
