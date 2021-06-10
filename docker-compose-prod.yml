@@ -9,7 +9,7 @@ services:
     command: gunicorn core.wsgi:application --bind 0.0.0.0:${DJANGO_CONTAINER_PORT}
     volumes:
       - .:/api-with-django-graphql
-      - /static:/static
+      - static_volume:/static
     expose:
       - ${DJANGO_CONTAINER_PORT}
     env_file:
@@ -34,6 +34,8 @@ services:
       context: ./nginx
       dockerfile: Dockerfile
     restart: always
+    volumes:
+    - static_volume:/static
     ports:
       - 1337:80
     depends_on:
