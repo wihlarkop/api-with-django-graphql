@@ -1,7 +1,8 @@
 import graphene
 
 from diaryapi.schema import DiaryQuery, DiaryMutation
-from todoapi.schema import TodoQuery, TodoMutation
+from todoapi.mutation import TodoMutation
+from todoapi.resolver import TodoQuery
 
 
 class Query(DiaryQuery, TodoQuery, graphene.ObjectType):

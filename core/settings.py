@@ -65,25 +65,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+DBMS = os.getenv('DBMS')
+if DBMS == 'POSTGRESQL':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.getenv('POSTGRES_DB'),
+            'USER': os.getenv('POSTGRES_USER'),
+            'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+            'HOST': os.getenv('POSTGRES_HOST'),
+            'PORT': os.getenv('POSTGRES_HOST_PORT'),
+            # 'HOST': '127.0.0.1', run from outside container
+            # 'PORT': 8080, run from outside container
+        }
     }
-}
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'postgres',
-#         'USER': 'postgres',
-#         'PASSWORD': 'postgres',
-#         # 'HOST': '127.0.0.1', run from outside container
-#         'HOST': 'db',
-#         'PORT': 5432,
-#         # 'PORT': 8080, run from outside container
-#     }
-# }
+elif DBMS == 'SQLITE':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -101,7 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 GRAPHENE = {
-    "SCHEMA": 'core.schema.schema'
+    'SCHEMA': 'core.schema.schema'
 }
 
 LANGUAGE_CODE = 'en-us'
