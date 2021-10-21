@@ -26,7 +26,8 @@ LOCAL_APPS = [
     'blogapi.apps.BlogapiConfig',
     'diaryapi.apps.DiaryapiConfig',
     'todoapi.apps.TodoapiConfig',
-    'yellowpagesapi.apps.YellowpagesapiConfig'
+    'yellowpagesapi.apps.YellowpagesapiConfig',
+    'fetch_api.apps.FetchApiConfig'
 ]
 
 THIRD_PARTY_APPS = [
@@ -65,8 +66,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-DBMS = os.getenv('DBMS')
-if DBMS == 'POSTGRESQL':
+ENV = os.getenv('ENV')
+if ENV == 'prod':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -79,7 +80,7 @@ if DBMS == 'POSTGRESQL':
             # 'PORT': 8080, run from outside container
         }
     }
-elif DBMS == 'SQLITE':
+else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',

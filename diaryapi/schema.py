@@ -7,5 +7,3 @@ class DiaryPostType(DjangoObjectType):
     class Meta:
         model = DiaryPost
         fields = ('id', 'timestamp', 'post')
-
-

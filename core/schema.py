@@ -1,11 +1,13 @@
 import graphene
 
-from diaryapi.schema import DiaryQuery, DiaryMutation
+from diaryapi.resolver import DiaryQuery
+from diaryapi.mutation import DiaryMutation
+from fetch_api.resolver import JsonPlaceHolderQuery
 from todoapi.mutation import TodoMutation
 from todoapi.resolver import TodoQuery
 
 
-class Query(DiaryQuery, TodoQuery, graphene.ObjectType):
+class Query(DiaryQuery, TodoQuery, JsonPlaceHolderQuery, graphene.ObjectType):
     pass
 
 

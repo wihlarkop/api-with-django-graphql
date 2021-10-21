@@ -1,6 +1,9 @@
 # api-with-django-graphql
 
-```
+
+
+After docker run you need to run migration
+```docker
 docker-compose run web python manage.py makemigrations
 docker-compose run web python manage.py migrate
 docker-compose run web python manage.py createsuperuser
