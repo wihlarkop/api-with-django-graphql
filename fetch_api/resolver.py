@@ -1,9 +1,7 @@
 import graphene
 
-from fetch_api.fetching import JsonPlaceHolderAPI
+from fetch_api.fetching import jph
 from fetch_api.schema import UserType, PostType, TodoType
-
-jph = JsonPlaceHolderAPI()
 
 
 class JsonPlaceHolderQuery(graphene.ObjectType):

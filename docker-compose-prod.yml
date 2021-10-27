@@ -8,7 +8,7 @@ services:
     restart: always
     command: gunicorn core.wsgi:application --bind 0.0.0.0:${DJANGO_CONTAINER_PORT}
     volumes:
-      - .:/api-with-django-graphql
+      - .:/graph-with-django-graphene
       - static_volume:/static
     expose:
       - ${DJANGO_CONTAINER_PORT}

@@ -1,16 +1,16 @@
-from graphene import Int, Mutation, ObjectType, String
+import graphene
 
 from .models import Todo
 from .schema import StatusEnum
 
 
-class AddTodo(Mutation):
-    id = Int()
-    title = String()
-    status = String()
+class AddTodo(graphene.Mutation):
+    id = graphene.Int()
+    title = graphene.String()
+    status = graphene.String()
 
     class Arguments:
-        title = String()
+        title = graphene.String()
 
     @staticmethod
     def mutate(root, info, title):
@@ -22,13 +22,13 @@ class AddTodo(Mutation):
         return AddTodo(id=todo.id, title=todo.title, status=todo.status)
 
 
-class UpdateStatusTodo(Mutation):
-    id = Int()
-    title = String()
-    status = String()
+class UpdateStatusTodo(graphene.Mutation):
+    id = graphene.Int()
+    title = graphene.String()
+    status = graphene.String()
 
     class Arguments:
-        id = Int()
+        id = graphene.Int()
         status = StatusEnum()
 
     @staticmethod
@@ -40,11 +40,11 @@ class UpdateStatusTodo(Mutation):
         return UpdateStatusTodo(id=todo.id, title=todo.title, status=todo.status)
 
 
-class DeleteTodo(Mutation):
-    id = Int()
+class DeleteTodo(graphene.Mutation):
+    id = graphene.Int()
 
     class Arguments:
-        id = Int()
+        id = graphene.Int()
 
     @staticmethod
     def mutate(root, info, id):
@@ -54,7 +54,7 @@ class DeleteTodo(Mutation):
         return None
 
 
-class TodoMutation(ObjectType):
+class TodoMutation(graphene.ObjectType):
     add_todo = AddTodo.Field()
     update_status_todo = UpdateStatusTodo.Field()
     delete_todo = DeleteTodo.Field()

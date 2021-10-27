@@ -1,16 +1,16 @@
-from graphene import Date, Int, Mutation, ObjectType, String
+import graphene
 
 from .models import DiaryPost
 
 
-class AddDiary(Mutation):
-    id = Int()
-    timestamp = Date()
-    post = String()
+class AddDiary(graphene.Mutation):
+    id = graphene.Int()
+    timestamp = graphene.Date()
+    post = graphene.String()
 
     class Arguments:
-        timestamp = Date()
-        post = String()
+        timestamp = graphene.Date()
+        post = graphene.String()
 
     @staticmethod
     def mutate(root, info, timestamp, post):
@@ -23,15 +23,15 @@ class AddDiary(Mutation):
         return AddDiary(id=diariespost.id, timestamp=diariespost.timestamp, post=diariespost.post)
 
 
-class UpdateDiary(Mutation):
-    id = Int()
-    timestamp = Date()
-    post = String()
+class UpdateDiary(graphene.Mutation):
+    id = graphene.Int()
+    timestamp = graphene.Date()
+    post = graphene.String()
 
     class Arguments:
-        id = Int()
-        timestamp = Date()
-        post = String()
+        id = graphene.Int()
+        timestamp = graphene.Date()
+        post = graphene.String()
 
     @staticmethod
     def mutate(root, info, id, timestamp, post):
@@ -43,11 +43,11 @@ class UpdateDiary(Mutation):
         return UpdateDiary(id=diariespost.id, title=diariespost.timestamp, status=diariespost.post)
 
 
-class DeleteDiary(Mutation):
-    id = Int()
+class DeleteDiary(graphene.Mutation):
+    id = graphene.Int()
 
     class Arguments:
-        id = Int()
+        id = graphene.Int()
 
     @staticmethod
     def mutate(root, info, id):
@@ -57,6 +57,7 @@ class DeleteDiary(Mutation):
         return None
 
 
-class DiaryMutation(ObjectType):
+class DiaryMutation(graphene.ObjectType):
     add_diary = AddDiary.Field()
+    update_diary = UpdateDiary.Field()
     delete_diary = DeleteDiary.Field()

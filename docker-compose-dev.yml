@@ -5,7 +5,7 @@ services:
     build: .
     command: python manage.py runserver 0.0.0.0:${DJANGO_CONTAINER_PORT}
     volumes:
-      - .:/api-with-django-graphql
+      - .:/graph-with-django-graphene
     ports:
       - ${DJANGO_HOST_PORT}:${DJANGO_CONTAINER_PORT}
     env_file:

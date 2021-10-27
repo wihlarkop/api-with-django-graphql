@@ -23,7 +23,6 @@ DEFAULT_APPS = [
 ]
 
 LOCAL_APPS = [
-    'blogapi.apps.BlogapiConfig',
     'diaryapi.apps.DiaryapiConfig',
     'todoapi.apps.TodoapiConfig',
     'yellowpagesapi.apps.YellowpagesapiConfig',
@@ -31,7 +30,7 @@ LOCAL_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    "graphene_django"
+    'graphene_django'
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + LOCAL_APPS + THIRD_PARTY_APPS

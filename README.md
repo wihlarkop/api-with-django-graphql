@@ -1,6 +1,12 @@
-# api-with-django-graphql
+# graph-with-django-graphene
 
+### Run in Local
 
+```commandline
+python manage.py runserver
+```
+
+### Run With Docker
 
 After docker run you need to run migration
 ```docker
