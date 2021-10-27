@@ -1,6 +1,12 @@
 import graphene
 
 
+class TodoType(graphene.ObjectType):
+    id = graphene.ID()
+    title = graphene.String()
+    completed = graphene.Boolean()
+
+
 class PostType(graphene.ObjectType):
     id = graphene.ID()
     title = graphene.String()
@@ -30,7 +36,11 @@ class UserAddressType(graphene.ObjectType):
 class UserType(graphene.ObjectType):
     id = graphene.ID()
     name = graphene.String()
+    username = graphene.String()
+    email = graphene.String()
     address = graphene.Field(UserAddressType)
     phone = graphene.String()
     website = graphene.String()
     company = graphene.Field(UserCompanyType)
+    posts = graphene.List(PostType)
+    todos = graphene.List(TodoType)

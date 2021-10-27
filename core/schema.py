@@ -7,7 +7,7 @@ from todoapi.mutation import TodoMutation
 from todoapi.resolver import TodoQuery
 
 
-class Query(DiaryQuery, TodoQuery, JsonPlaceHolderQuery, graphene.ObjectType):
+class Query(DiaryQuery, JsonPlaceHolderQuery, graphene.ObjectType):
     pass
 
 
